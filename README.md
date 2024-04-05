@@ -40,17 +40,18 @@ For the main switch :
 
 ![mainswitchcontinue](https://github.com/marodorse/secure_network_design/assets/34199422/e2bd0267-7211-4ab0-b8bd-77c2fedbfcae)
 
-VLANs config : 
+VLANs config on MultilayerSwitch : 
 
 ![multilayerSwitchVlanConfig](https://github.com/marodorse/secure_network_design/assets/34199422/644d4143-1047-40b8-a451-fe5a4b0770c2)
 
-for the router:   
+Router configuration :   
 
 ![routeurConfiguration](https://github.com/marodorse/secure_network_design/assets/34199422/9b3714ff-9d27-43cf-9587-07e8344c2414)
 
 ![routeurConfiguration2](https://github.com/marodorse/secure_network_design/assets/34199422/8195e596-dba2-41f3-8ec9-bd5eff1f5c56)
 
 Core Layer :   
+
 ![corelayer](https://github.com/marodorse/secure_network_design/assets/34199422/06882e32-ed93-4b1d-a3c1-2f48ffcaab6d)
 
 Distribution Layer :    
