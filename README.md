@@ -17,15 +17,15 @@ Support (2 sectors, 10 workstations each)
 
 _Architecture implemented_ : hierarchical 3 tier with star topology.  
 
-- Core layer : network backbone, high speed data transport, fast packet forwarding) 
+- Core layer : network backbone, high speed data transport, fast packet forwarding). 
 
-- Distribution layer : here routing filtering and policy enforcment services are implemented, it combines the serparated traffic from the access layer. Vlan segmentation and ACL are configured here 
+- Distribution layer : It is on this layer that we implemented routing filtering and policy enforcement services. It combines the separated traffic from the access layer and does the Vlan segmentation, ACLs are configured here 
 
 - Access layer : entry point for end devices, brings together the traffic from all the access points. 
 
 **Why ?**  
 
-Scalability, simplified management, enhanced security ( granular control )  
+Scalability, simplified management, enhanced security ( granular control ) 
 
 ### network diagram with annotations :   
 ![diagram](https://github.com/marodorse/secure_network_design/assets/34199422/2eede354-9590-4563-a9c1-44054927b27d)
@@ -116,5 +116,5 @@ This provides an additional layer of security to protect sensitive internal data
 ACLs are applied to the interfaces connecting the VLANs to enforce access control policies and regulate traffic flow between network segments. ACLs specify which types of traffic are allowed or denied based on predefined criteria, such as source and destination IP addresses, ports, or protocols. 
  ACLs are used to filter traffic entering and exiting the DMZ, allowing only authorized traffic to reach public-facing services while blocking or restricting access to sensitive resources in the internal network. For example, ACLs may permit inbound web traffic to reach web servers in the DMZ while blocking direct access to internal databases or file servers. NAT -> NAT provides a level of security by hiding the internal IP addresses of devices on the local network from external sources, making it more difficult for attackers to directly target individual devices.
 
-
+We configured our ACLs in such a way that it only allows the support01 and support02 to communicate with one another. The outside world cannot send queries to the inside network but our inside network can query the outside world wide web. 
 
