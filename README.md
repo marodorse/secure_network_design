@@ -27,115 +27,61 @@ _Architecture implemented_ : hierarchical 3 tier with star topology.
 
 Scalability, simplified management, enhanced security ( granular control )  
 
-network diagram with annotations :   
+### network diagram with annotations :   
 ![diagram](https://github.com/marodorse/secure_network_design/assets/34199422/2eede354-9590-4563-a9c1-44054927b27d)
 
-IP Addressing Per sector and vlan :   
+###  IP Addressing Per sector and vlan :   
 ![image](https://github.com/marodorse/secure_network_design/assets/34199422/27d91246-e8c9-4adc-921d-8af44080e4c3)
 
-# key devices configurations : 
+### key devices configurations : 
+For the main switch :   
 
-mainswitchML#show running-config
-Building configuration...
-Current configuration : 5363 bytes
-!
-version 16.3.2
-no service timestamps log datetime msec
-no service timestamps debug datetime msec
-service password-encryption
-!
-hostname mainswitchML
-!
-!
-enable password 7 0836495C061A0E
-no ip cef
-ip routing
-!
-no ipv6 cef
-username skm password 7 0836495C061A0E
-ip ssh version 2
-no ip domain-lookup
-ip domain-name ourcreation.org
-spanning-tree mode pvst
-interface GigabitEthernet1/0/1
-no switchport
-ip address 172.16.3.145 255.255.255.252
-duplex auto
-speed auto
-!
-interface GigabitEthernet1/0/2
-switchport mode trunk
-ip access-group 101 in
-ip access-group 101 out
-!
-interface GigabitEthernet1/0/3
-switchport mode trunk
-!
-interface GigabitEthernet1/0/4
-switchport mode trunk
-!
-interface GigabitEthernet1/0/5
-switchport mode trunk
-!
-interface GigabitEthernet1/0/6
-switchport mode trunk
-!
-interface GigabitEthernet1/0/7
-switchport trunk allowed vlan 10-14,20
-switchport mode trunk
-interface Vlan1
-!
-router ospf 10
-router-id 1.1.1.1
-log-adjacency-changes
-network 172.16.1.0 0.0.0.127 area 0
-network 172.16.1.128 0.0.0.127 area 0
-network 172.16.2.0 0.0.0.127 area 0
-network 172.16.2.128 0.0.0.127 area 0
-network 172.16.3.0 0.0.0.127 area 0
-network 172.16.3.128 0.0.0.15 area 0
-network 172.16.3.144 0.0.0.3 area 0
-!
-ip classless
-ip route 0.0.0.0 0.0.0.0 GigabitEthernet1/0/1 
-!
-ip flow-export version 9
-!
-!
-access-list 101 deny ip 172.16.1.0 0.0.0.127 
-172.16.1.128 0.0.0.127
-access-list 101 deny ip 172.16.1.0 0.0.0.127 172.16.2.0 
-0.0.0.127
-access-list 101 deny ip 172.16.1.0 0.0.0.127 
-172.16.2.128 0.0.0.127
-access-list 101 deny ip 172.16.1.0 0.0.0.127 172.16.3.0 
-0.0.0.127
-access-list 101 deny ip 172.16.1.0 0.0.0.127 
-172.16.3.128 0.0.0.127
-access-list 101 deny ip 172.16.1.0 0.0.0.127 
-172.16.3.128 0.0.0.15
-access-list 102 deny ip 172.16.1.128 0.0.0.127 
-172.16.1.0 0.0.0.127
-access-list 102 deny ip 172.16.1.128 0.0.0.127 
-172.16.2.0 0.0.0.127
-access-list 102 deny ip 172.16.1.128 0.0.0.127 
-172.16.2.128 0.0.0.127
-access-list 102 deny ip 172.16.1.128 0.0.0.127 
-172.16.3.128 0.0.0.127
-access-list 102 deny ip 172.16.1.128 0.0.0.127 
-172.16.3.0 0.0.0.127
-access-list 103 deny ip 172.16.2.0 0.0.0.127 172.16.1.0 
-0.0.0.127
-access-list 103 deny ip 172.16.2.0 0.0.0.127 
-172.16.1.128 0.0.0.127
-access-list 103 deny ip 172.16.2.0 0.0.0.127 
-172.16.2.128 0.0.0.127
-access-list 103 deny ip 172.16.2.0 0.0.0.127 172.16.3.0 
-0.0.0.127
-access-list 103 deny ip 172.16.2.0 0.0.0.127 
-172.16.3.128 0.0.0.15
-access-list 104 deny ip 172.16.2.128 0.0.0.127 
-172.16.1.0 0.0.0.127
+![mainswitchconfig](https://github.com/marodorse/secure_network_design/assets/34199422/cff98e04-8472-473a-a3d5-7b93c59e9f18)
+
+![mainswitchcontinue](https://github.com/marodorse/secure_network_design/assets/34199422/e2bd0267-7211-4ab0-b8bd-77c2fedbfcae)
+
+VLANs config : 
+
+![multilayerSwitchVlanConfig](https://github.com/marodorse/secure_network_design/assets/34199422/644d4143-1047-40b8-a451-fe5a4b0770c2)
+
+for the router:   
+
+![routeurConfiguration](https://github.com/marodorse/secure_network_design/assets/34199422/9b3714ff-9d27-43cf-9587-07e8344c2414)
+
+![routeurConfiguration2](https://github.com/marodorse/secure_network_design/assets/34199422/8195e596-dba2-41f3-8ec9-bd5eff1f5c56)
+
+Core Layer :   
+![corelayer](https://github.com/marodorse/secure_network_design/assets/34199422/06882e32-ed93-4b1d-a3c1-2f48ffcaab6d)
+
+Distribution Layer :    
+
+![distributionlayer](https://github.com/marodorse/secure_network_design/assets/34199422/d825544e-e614-487c-8c08-08284d3accc9)
+
+DMZ buffer & Server Room :    
+
+![core layer](https://github.com/marodorse/secure_network_design/assets/34199422/afee637b-4d1e-45b5-b1c3-5c3ef7bf1322)
+
+Support Sector :    
+
+![support01+02](https://github.com/marodorse/secure_network_design/assets/34199422/e014d760-428a-47a6-be1f-327087b8ca84)
+
+Study and Production Sector :    
+
+![study+production](https://github.com/marodorse/secure_network_design/assets/34199422/27603779-f4dd-40d3-84c3-bfa1fb00d003)
+
+Management and Secretariat Sector :    
+
+![host01](https://github.com/marodorse/secure_network_design/assets/34199422/dfe18606-10c6-4aa7-b7d0-1efad1dbd347)
+
+
+
+
+
+
+
+**Final Layout :**
+
+![layoutfinal](https://github.com/marodorse/secure_network_design/assets/34199422/67a5961b-f052-410d-b95b-346fa66fd03b)
 
 # Security features :
 
